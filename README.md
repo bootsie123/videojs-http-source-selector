@@ -1,5 +1,7 @@
 # videojs-http-source-selector
 
+A fork of videojs-http-source-selector which includes the cog size pull request from [DoomTay](https://github.com/jfujita/videojs-http-source-selector/pull/38) and removal of all console logging
+
 [![NPM](https://nodei.co/npm/videojs-http-source-selector.png)](https://nodei.co/npm/videojs-http-source-selector/) [![Greenkeeper badge](https://badges.greenkeeper.io/jfujita/videojs-http-source-selector.svg)](https://greenkeeper.io/) 
 
 VideoJS plugin that leverages videojs-contrib-quality-levels plugin to offer manual user-selectable level selection options for adaptive http streams.
