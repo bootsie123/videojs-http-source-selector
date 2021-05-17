@@ -4,7 +4,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var videojs = _interopDefault(require('video.js'));
 
-var version = "1.1.6";
+var version = "1.1.7";
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
@@ -38,7 +38,7 @@ function (_MenuItem) {
 
   _proto.handleClick = function handleClick() {
     var selected = this.options_;
-    console.log("Changing quality to:", selected.label);
+    this.player.log.debug("Changing quality to:", selected.label);
 
     _MenuItem.prototype.handleClick.call(this);
 
@@ -198,8 +198,8 @@ var registerPlugin = videojs.registerPlugin || videojs.plugin; // const dom = vi
 
 var onPlayerReady = function onPlayerReady(player, options) {
   player.addClass('vjs-http-source-selector');
-  console.log("videojs-http-source-selector initialized!");
-  console.log("player.techName_:" + player.techName_); //This plugin only supports level selection for HLS playback
+  player.log.debug("videojs-http-source-selector initialized!");
+  player.log.debug("player.techName_:" + player.techName_); //This plugin only supports level selection for HLS playback
 
   if (player.techName_ != 'Html5') {
     return false;
@@ -216,9 +216,9 @@ var onPlayerReady = function onPlayerReady(player, options) {
     videojs.log('loadmetadata event'); // hack for plugin idempodency... prevents duplicate menubuttons from being inserted into the player if multiple player.httpSourceSelector() functions called.
 
     if (player.videojs_http_source_selector_initialized == 'undefined' || player.videojs_http_source_selector_initialized == true) {
-      console.log("player.videojs_http_source_selector_initialized == true");
+      player.log.debug("player.videojs_http_source_selector_initialized == true");
     } else {
-      console.log("player.videojs_http_source_selector_initialized == false");
+      player.log.debug("player.videojs_http_source_selector_initialized == false");
       player.videojs_http_source_selector_initialized = true;
       var controlBar = player.controlBar,
           fullscreenToggle = controlBar.getChild('fullscreenToggle').el();

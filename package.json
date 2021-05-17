@@ -1,6 +1,6 @@
 {
-  "name": "videojs-http-source-selector",
-  "version": "1.1.6",
+  "name": "videojs-http-source-selector-2",
+  "version": "1.1.8",
   "description": "VideoJS plugin that leverages videojs-contrib-quality-levels plugin to offer manual user-selectable level selection options for adaptive http streams.",
   "main": "dist/videojs-http-source-selector.cjs.js",
   "repository": {
@@ -88,7 +88,7 @@
     "karma-qunit": "^3.1.1",
     "karma-safari-launcher": "^1.0.0",
     "mkdirp": "^0.5.1",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.12",
     "node-static": "^0.7.10",
     "npm-run-all": "^4.1.2",
     "portscanner": "^2.1.1",

@@ -1,7 +1,7 @@
 /**
- * videojs-http-source-selector
- * @version 1.1.6
- * @copyright 2019 Justin Fujita <Justin@pivotshare.com>
+ * videojs-http-source-selector-2
+ * @version 1.1.7
+ * @copyright 2021 Justin Fujita <Justin@pivotshare.com>
  * @license MIT
  */
 (function (global, factory) {
@@ -12,7 +12,7 @@
 
   videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
 
-  var version = "1.1.6";
+  var version = "1.1.7";
 
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
@@ -46,7 +46,7 @@
 
     _proto.handleClick = function handleClick() {
       var selected = this.options_;
-      console.log("Changing quality to:", selected.label);
+      this.player.log.debug("Changing quality to:", selected.label);
 
       _MenuItem.prototype.handleClick.call(this);
 
@@ -206,8 +206,8 @@
 
   var onPlayerReady = function onPlayerReady(player, options) {
     player.addClass('vjs-http-source-selector');
-    console.log("videojs-http-source-selector initialized!");
-    console.log("player.techName_:" + player.techName_); //This plugin only supports level selection for HLS playback
+    player.log.debug("videojs-http-source-selector initialized!");
+    player.log.debug("player.techName_:" + player.techName_); //This plugin only supports level selection for HLS playback
 
     if (player.techName_ != 'Html5') {
       return false;
@@ -224,9 +224,9 @@
       videojs.log('loadmetadata event'); // hack for plugin idempodency... prevents duplicate menubuttons from being inserted into the player if multiple player.httpSourceSelector() functions called.
 
       if (player.videojs_http_source_selector_initialized == 'undefined' || player.videojs_http_source_selector_initialized == true) {
-        console.log("player.videojs_http_source_selector_initialized == true");
+        player.log.debug("player.videojs_http_source_selector_initialized == true");
       } else {
-        console.log("player.videojs_http_source_selector_initialized == false");
+        player.log.debug("player.videojs_http_source_selector_initialized == false");
         player.videojs_http_source_selector_initialized = true;
         var controlBar = player.controlBar,
             fullscreenToggle = controlBar.getChild('fullscreenToggle').el();

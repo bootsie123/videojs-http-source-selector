@@ -28,9 +28,9 @@ const registerPlugin = videojs.registerPlugin || videojs.plugin;
 const onPlayerReady = (player, options) =>
 {
   player.addClass('vjs-http-source-selector');
-  console.log("videojs-http-source-selector initialized!");
+  player.log.debug("videojs-http-source-selector initialized!");
 
-  console.log("player.techName_:"+player.techName_);
+  player.log.debug("player.techName_:"+player.techName_);
   //This plugin only supports level selection for HLS playback
   if(player.techName_ != 'Html5')
   {
@@ -49,13 +49,13 @@ const onPlayerReady = (player, options) =>
     // hack for plugin idempodency... prevents duplicate menubuttons from being inserted into the player if multiple player.httpSourceSelector() functions called.
     if(player.videojs_http_source_selector_initialized == 'undefined' || player.videojs_http_source_selector_initialized == true)
     {
-      console.log("player.videojs_http_source_selector_initialized == true");
+      player.log.debug("player.videojs_http_source_selector_initialized == true");
     }
     else
     {
-      console.log("player.videojs_http_source_selector_initialized == false")
+      player.log.debug("player.videojs_http_source_selector_initialized == false")
       player.videojs_http_source_selector_initialized = true;
-      var controlBar = player.controlBar, 
+      var controlBar = player.controlBar,
           fullscreenToggle = controlBar.getChild('fullscreenToggle').el();
       controlBar.el().insertBefore(controlBar.addChild('SourceMenuButton').el(), fullscreenToggle);
     }
