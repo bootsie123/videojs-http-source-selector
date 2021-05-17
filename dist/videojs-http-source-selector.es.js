@@ -1,6 +1,6 @@
 import videojs from 'video.js';
 
-var version = "1.1.7";
+var version = "1.1.9";
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
