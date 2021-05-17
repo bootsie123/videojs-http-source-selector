@@ -1,6 +1,6 @@
 /**
  * videojs-http-source-selector-2
- * @version 1.1.9
+ * @version 1.1.10
  * @copyright 2021 Justin Fujita <Justin@pivotshare.com>
  * @license MIT
  */
@@ -12,7 +12,7 @@
 
   videojs = videojs && videojs.hasOwnProperty('default') ? videojs['default'] : videojs;
 
-  var version = "1.1.9";
+  var version = "1.1.10";
 
   function _inheritsLoose(subClass, superClass) {
     subClass.prototype = Object.create(superClass.prototype);
@@ -46,7 +46,7 @@
 
     _proto.handleClick = function handleClick() {
       var selected = this.options_;
-      this.player.log.debug("Changing quality to:", selected.label);
+      this.player().log.debug("Changing quality to:", selected.label);
 
       _MenuItem.prototype.handleClick.call(this);
 
@@ -221,7 +221,7 @@
 
     player.on(['loadedmetadata'], function (e) {
       var qualityLevels = player.qualityLevels();
-      videojs.log('loadmetadata event'); // hack for plugin idempodency... prevents duplicate menubuttons from being inserted into the player if multiple player.httpSourceSelector() functions called.
+      player.log.debug('loadmetadata event'); // hack for plugin idempodency... prevents duplicate menubuttons from being inserted into the player if multiple player.httpSourceSelector() functions called.
 
       if (player.videojs_http_source_selector_initialized == 'undefined' || player.videojs_http_source_selector_initialized == true) {
         player.log.debug("player.videojs_http_source_selector_initialized == true");

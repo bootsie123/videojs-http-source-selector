@@ -4,7 +4,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var videojs = _interopDefault(require('video.js'));
 
-var version = "1.1.9";
+var version = "1.1.10";
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
@@ -38,7 +38,7 @@ function (_MenuItem) {
 
   _proto.handleClick = function handleClick() {
     var selected = this.options_;
-    this.player.log.debug("Changing quality to:", selected.label);
+    this.player().log.debug("Changing quality to:", selected.label);
 
     _MenuItem.prototype.handleClick.call(this);
 
@@ -213,7 +213,7 @@ var onPlayerReady = function onPlayerReady(player, options) {
 
   player.on(['loadedmetadata'], function (e) {
     var qualityLevels = player.qualityLevels();
-    videojs.log('loadmetadata event'); // hack for plugin idempodency... prevents duplicate menubuttons from being inserted into the player if multiple player.httpSourceSelector() functions called.
+    player.log.debug('loadmetadata event'); // hack for plugin idempodency... prevents duplicate menubuttons from being inserted into the player if multiple player.httpSourceSelector() functions called.
 
     if (player.videojs_http_source_selector_initialized == 'undefined' || player.videojs_http_source_selector_initialized == true) {
       player.log.debug("player.videojs_http_source_selector_initialized == true");
